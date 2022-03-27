@@ -8,6 +8,7 @@ export default {
   component: Button,
   // More on argTypes: https://storybook.js.org/docs/angular/api/argtypes
   argTypes: {
+    color: { control: 'color' },
     backgroundColor: { control: 'color' },
   },
 } as Meta;
