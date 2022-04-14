@@ -1,4 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { SizeType, SizeTypes } from 'src/core/enums/size.enum';
+import { VariantType, VariantTypes } from 'src/core/enums/variant.enum';
 
 @Component({
   selector: 'storybook-button',
@@ -10,7 +12,7 @@ export default class ButtonComponent {
    * Is this the principal call to action on the page?
    */
   @Input()
-  primary = false;
+  variant: VariantTypes = VariantType.primary;
 
   /**
    * What color to use
@@ -25,10 +27,16 @@ export default class ButtonComponent {
   backgroundColor?: string;
 
   /**
+   * What background color to use
+   */
+  @Input()
+  borderRadius?: string;
+
+  /**
    * How large should the button be?
    */
   @Input()
-  size: 'small' | 'medium' | 'large' = 'medium';
+  size: SizeType = SizeType.medium;
 
   /**
    * Button contents
@@ -44,11 +52,18 @@ export default class ButtonComponent {
   @Output()
   onClick = new EventEmitter<Event>();
 
-  public get classes(): string[] {
-    const mode = this.primary
-      ? 'storybook-button--primary'
-      : 'storybook-button--secondary';
+  sizeTypes = SizeType;
 
-    return ['storybook-button', `storybook-button--${this.size}`, mode];
+  public get classes(): string[] {
+    const mode =
+      this.variant === VariantType.primary
+        ? 'storybook-button--primary'
+        : 'storybook-button--secondary';
+
+    return [
+      'storybook-button',
+      `storybook-button--${this.size.toString()}`,
+      mode,
+    ];
   }
 }

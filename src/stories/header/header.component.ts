@@ -1,4 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { SizeType } from 'src/core/enums/size.enum';
+import { VariantType } from 'src/core/enums/variant.enum';
 import { User } from '../User';
 
 @Component({
@@ -18,4 +20,7 @@ export default class HeaderComponent {
 
   @Output()
   onCreateAccount = new EventEmitter<Event>();
+
+  variantTypes = VariantType;
+  sizeTypes = SizeType;
 }

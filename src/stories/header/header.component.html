@@ -32,7 +32,7 @@
         </span>
         <storybook-button
           *ngIf="user"
-          size="small"
+          [size]="sizeTypes.small"
           (onClick)="onLogout.emit($event)"
           label="Log out"
         ></storybook-button>
@@ -40,16 +40,15 @@
       <div *ngIf="!user">
         <storybook-button
           *ngIf="!user"
-          size="small"
+          [size]="sizeTypes.small"
           class="margin-left"
           (onClick)="onLogin.emit($event)"
           label="Log in"
         ></storybook-button>
         <storybook-button
           *ngIf="!user"
-          primary
-          size="small"
-          primary="true"
+          [size]="sizeTypes.small"
+          [variant]="variantTypes.primary"
           class="margin-left"
           (onClick)="onCreateAccount.emit($event)"
           label="Sign up"
